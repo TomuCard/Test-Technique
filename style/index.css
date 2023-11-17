@@ -1,0 +1,42 @@
+@import url('https://fonts.cdnfonts.com/css/nexa-bold');
+
+html, * {
+    font-family: 'Nexa', sans-serif;
+}
+
+.type select, .departement input {
+    padding: 5px;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px solid #000;
+    margin: 10px 20px 0px 0px;
+}
+
+.ouvert input, .payant input {
+    margin: 10px 20px 0px 0px;
+}
+
+.buttonSubmit {
+    margin: 10px 20px 0px 0px;
+    padding: 5px 50px;
+    border: 1px solid #4a1d7b;
+    border-radius: 2px;
+    background-color: #5F259F;
+    color: #FFF;
+}
+
+.buttonSubmit:hover {
+    background-color: #4a1d7b;
+    border: 1px solid #5F259F;
+}
+
+td {
+    text-align: center;
+    color: #FFF;
+    background-color: #5F259F;
+    padding: 5px;
+    border: 2px solid #4a1d7b;
+    border-radius: 2px;
+}
+
+
