@@ -10,15 +10,28 @@ html, * {
     border-radius: 2px;
     border: 1px solid #000;
     margin: 10px 20px 0px 0px;
+    min-width: 186px;
 }
 
 .ouvert input, .payant input {
     margin: 10px 20px 0px 0px;
 }
 
+
+.containerFilter {
+    display: flex;
+    flex-direction: row;
+}
+
+.containerFlex {
+    display: flex;
+    flex-direction: column;
+}
+
 .buttonSubmit {
     margin: 10px 20px 0px 0px;
-    padding: 5px 50px;
+    padding: 5px 0px;
+    width: 186px;
     border: 1px solid #4a1d7b;
     border-radius: 2px;
     background-color: #5F259F;

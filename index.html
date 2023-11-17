@@ -8,41 +8,46 @@
 </head>
 <body>
     <form >
-        <!-- Select du type  -->
-        <label for="type" class="type">Type :
-            <select id="type" name="type">
-                <option value="none">Tout</option>
-                <option value="baignade_exterieure">Baignade extérieure</option>
-                <option value="bains-douches">Bains-douches</option>
-                <option value="bibliotheque">Bibliothèque</option>
-                <option value="brumisateur">Brumisateur</option>
-                <option value="decouverte_initiation">Découverte et Initiation</option>
-                <option value="lieux_culte">Lieux de culte</option>
-                <option value="mairie_arrondissement">Mairie d'arrondissement</option>
-                <option value="musee">Musée</option>
-                <option value="ombriere_perenne">Ombrière pérenne</option>
-                <option value="ombriere_temporaire">Ombrière temporaire</option>
-                <option value="piscine">Piscine</option>
-                <option value="terrain_boules">Terrain de boules</option>
-            </select>
-        </label>
+        <div class="containerFilter">
+            <div class="containerFlex">
+                <!-- Select du type  -->
+                <label for="type" class="type">Type :
+                    <select id="type" name="type">
+                        <option value="none">Tout</option>
+                        <option value="baignade_exterieure">Baignade extérieure</option>
+                        <option value="bains-douches">Bains-douches</option>
+                        <option value="bibliotheque">Bibliothèque</option>
+                        <option value="brumisateur">Brumisateur</option>
+                        <option value="decouverte_initiation">Découverte et Initiation</option>
+                        <option value="lieux_culte">Lieux de culte</option>
+                        <option value="mairie_arrondissement">Mairie d'arrondissement</option>
+                        <option value="musee">Musée</option>
+                        <option value="ombriere_perenne">Ombrière pérenne</option>
+                        <option value="ombriere_temporaire">Ombrière temporaire</option>
+                        <option value="piscine">Piscine</option>
+                        <option value="terrain_boules">Terrain de boules</option>
+                    </select>
+                </label>
+                
+                <!-- Checkbox gratuit -->
+                <label for="payant" class="payant">Gratuit :
+                    <input class="checkbox" type="checkbox" id="payant" name="toggle">
+                </label>
+            </div>
+    
+            <div class="containerFlex">
+                <!-- Input du département -->
+            <label for="departement" class="departement">Département :
+                <input type="text" id="departement" name="departement" placeholder="75001 - 75020">
+            </label>
+    
+            <!-- Checkbox ouvert-->
+            <label for="checkbox" class="ouvert">Ouvert maintenant :
+                <input type="checkbox" id="checkbox" name="checkbox">
+            </label>
+            </div>
+        </div>
         
-        <!-- Input du département -->
-        <label for="departement" class="departement">Département :
-            <input type="text" id="departement" name="departement" placeholder="75001 - 75020">
-        </label>
-        
-        <!-- Checkbox gratuit -->
-        <label for="payant" class="payant">Gratuit :
-            <input class="checkbox" type="checkbox" id="payant" name="toggle">
-        </label>
-
-        <!-- Checkbox ouvert-->
-        <label for="checkbox" class="ouvert">Ouvert maintenant :
-            <input type="checkbox" id="checkbox" name="checkbox">
-        </label>
-        <br>
-
         <!-- Bouton de soumission -->
         <input type="submit" class="buttonSubmit" value="Soumettre">
     </form>

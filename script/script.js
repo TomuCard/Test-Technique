@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // On récupère l'API et on lui ajoute les filtres
-        const url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=20" + gratuit + type + ouvertMaintenant + departement;
+        const url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=99" + gratuit + type + ouvertMaintenant + departement;
 
         // On vérifie si un tableau existe déja et si oui on le supprime
         const existingTable = document.querySelector("table");
