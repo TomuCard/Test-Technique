@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test technique Tom Cardonnel</title>
     <link href="style/index.css" rel="stylesheet"></link>
 </head>
 <body>
@@ -30,27 +30,33 @@
                 </label>
                 
                 <!-- Checkbox gratuit -->
-                <label for="payant" class="payant">Gratuit :
-                    <input class="checkbox" type="checkbox" id="payant" name="toggle">
+                <label for="free" class="free">Gratuit :
+                    <input class="checkbox" type="checkbox" id="free" name="toggle">
                 </label>
             </div>
     
             <div class="containerFlex">
                 <!-- Input du département -->
-            <label for="departement" class="departement">Département :
-                <input type="text" id="departement" name="departement" placeholder="75001 - 75020">
+            <label for="department" class="department">Département :
+                <input type="number" id="department" name="departement" placeholder="75001 - 75020" min="75001" max="75020" maxlength="5">
             </label>
     
             <!-- Checkbox ouvert-->
-            <label for="checkbox" class="ouvert">Ouvert maintenant :
+            <label for="checkbox" class="open">Ouvert maintenant :
                 <input type="checkbox" id="checkbox" name="checkbox">
             </label>
             </div>
         </div>
         
-        <!-- Bouton de soumission -->
-        <input type="submit" class="buttonSubmit" value="Soumettre">
+        <!-- Bouton de validation -->
+        <input type="submit" class="buttonSubmit" value="Valider">
     </form>
+    <p id="stringError"></p>
     <script src="/script/script.js"></script>
 </body>
 </html>
+
+<!--
+a faire : 
+-si y a pas de valeurs dans le tableau, message (il n'y a aucune donnée corrrespondante ou jsp)
+-->

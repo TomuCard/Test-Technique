@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+
+
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
 
         // On récupère les valeurs des champs du formulaire
         var type = document.getElementById('type').value;
-        var gratuit = document.getElementById('payant').checked;
-        var departement = document.getElementById('departement').value;
-        var ouvertMaintenant = document.getElementById('checkbox').checked;
-        
+        var free = document.getElementById('free').checked;
+        var department = document.getElementById('department').value;
+        var openNow = document.getElementById('checkbox').checked;
+
         // Filtre du type 
         switch (type) {
             case "baignade_exterieure" :
@@ -51,88 +53,88 @@ document.addEventListener('DOMContentLoaded', function() {
                 type = "";
         }
 
-        // Filtre Gratuit
-        if (gratuit == true) {
-            gratuit = "&refine=payant%3A%22Non%22"
+        // Filtre gratuit
+        if (free == true) {
+            free = "&refine=payant%3A%22Non%22"
         }else {
-            gratuit = ""
+            free = ""
         }
 
         // Filtre du département 
-        switch (departement) {
+        switch (department) {
             case "75001" :
-                departement = "&refine=arrondissement%3A%2275001%22";
+                department = "&refine=arrondissement%3A%2275001%22";
                 break
             case "75002" :
-                departement = "&refine=arrondissement%3A%2275002%22"
+                department = "&refine=arrondissement%3A%2275002%22"
                 break
             case "75003" :
-                departement = "&refine=arrondissement%3A%2275003%22"
+                department = "&refine=arrondissement%3A%2275003%22"
                 break
             case "75004" :
-                departement = "&refine=arrondissement%3A%2275004%22"
+                department = "&refine=arrondissement%3A%2275004%22"
                 break
             case "75005" :
-                departement = "&refine=arrondissement%3A%2275005%22"
+                department = "&refine=arrondissement%3A%2275005%22"
                 break
             case "75006" :
-                departement = "&refine=arrondissement%3A%2275006%22"
+                department = "&refine=arrondissement%3A%2275006%22"
                 break
             case "75007" :
-                departement = "&refine=arrondissement%3A%2275007%22"
+                department = "&refine=arrondissement%3A%2275007%22"
                 break
             case "75008" :
-                departement = "&refine=arrondissement%3A%2275008%22"
+                department = "&refine=arrondissement%3A%2275008%22"
                 break
             case "75009" :
-                departement = "&refine=arrondissement%3A%2275009%22"
+                department = "&refine=arrondissement%3A%2275009%22"
                 break
             case "75010" :
-                departement = "&refine=arrondissement%3A%2275010%22"
+                department = "&refine=arrondissement%3A%2275010%22"
                 break
             case "75011" :
-                departement = "&refine=arrondissement%3A%2275011%22"
+                department = "&refine=arrondissement%3A%2275011%22"
                 break
             case "75012" :
-                departement = "&refine=arrondissement%3A%2275012%22"
+                department = "&refine=arrondissement%3A%2275012%22"
                 break
             case "75013" :
-                departement = "&refine=arrondissement%3A%2275013%22"
+                department = "&refine=arrondissement%3A%2275013%22"
                 break
             case "75014" :
-                departement = "&refine=arrondissement%3A%2275014%22"
+                department = "&refine=arrondissement%3A%2275014%22"
                 break
             case "75015" :
-                departement = "&refine=arrondissement%3A%2275015%22"
+                department = "&refine=arrondissement%3A%2275015%22"
                 break
             case "75016" :
-                departement = "&refine=arrondissement%3A%2275016%22"
+                department = "&refine=arrondissement%3A%2275016%22"
                 break
             case "75017" :
-                departement = "&refine=arrondissement%3A%2275017%22"
+                department = "&refine=arrondissement%3A%2275017%22"
                 break
             case "75018" :
-                departement = "&refine=arrondissement%3A%2275018%22"
+                department = "&refine=arrondissement%3A%2275018%22"
                 break
             case "75019" :
-                departement = "&refine=arrondissement%3A%2275019%22"
+                department = "&refine=arrondissement%3A%2275019%22"
                 break
             case "75020" :
-                departement = "&refine=arrondissement%3A%2275020%22"
+                department = "&refine=arrondissement%3A%2275020%22"
                 break
             default : 
-                departement = "";
+                department = "";
         }
 
         // Filtre Ouvert
-        if (ouvertMaintenant == true) {
-            ouvertMaintenant = "&refine=statut_ouverture%3A%22Ouvert%22"
+        if (openNow == true) {
+            openNow = "&refine=statut_ouverture%3A%22Ouvert%22"
         }else {
-            ouvertMaintenant = ""
+            openNow = ""
         }
 
         // On récupère l'API et on lui ajoute les filtres
-        const url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=99" + gratuit + type + ouvertMaintenant + departement;
+        const url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=99" + free + type + openNow + department;
 
         // On vérifie si un tableau existe déja et si oui on le supprime
         const existingTable = document.querySelector("table");
@@ -140,42 +142,52 @@ document.addEventListener('DOMContentLoaded', function() {
             existingTable.parentNode.removeChild(existingTable);
         }
 
-        // On récupère le json de l'API
+        // Affiche un message Loading en attendant les données
+        document.getElementById("stringError").innerHTML = "Chargement . . .";
+
+        // On récupère le JSON de l'API
         fetch(url)
         .then(response => response.json())
         .then(data => {
+
+            console.log(data.results);
             // Création du tableau
             let table = document.createElement("table");
-
+            
             // Création de la ligne d'en-tête
             let headerRow = table.insertRow();
             
             // Colonnes d'en-tête
             let columns = ["Nom", "Type", "Payant", "Adresse", "Arrondissement", "Statut Ouverture", "Horaires Période"];
 
-            // Ajoute les noms dans les colonnes
+            // Ajout des noms dans les colonnes
             columns.forEach(columnName => {
                 let headerCell = headerRow.insertCell();
                 headerCell.innerHTML = `<b>${columnName}</b>`;
             });
 
-            // On récupère juste les données du JSON qui nous intéressez (ceux du tableau)
+            // On récupère juste les données du JSON qui nous intéressent (celles du tableau)
             data.results.forEach(result => {
 
-                // On crée les rangée
+                // On crée les rangées
                 const row = table.insertRow();
 
                 const columnsData = ["nom", "type", "payant", "adresse", "arrondissement", "statut_ouverture", "horaires_periode"];
 
-                // Puis on ajoute les données dans les rangée
+                // Puis on ajoute les données dans les rangées
                 columnsData.forEach(column => {
                     let cell = row.insertCell();
                     cell.innerHTML = result[column];
                 });
             });
-            
-            // Et enfin on ajoute le tableau dans mon html
-            document.body.appendChild(table);
+
+            if (data.results.length == 0){
+                document.getElementById("stringError").innerHTML = "Il n'y a pas de données correspondantes à votre recherche.";
+            }else {
+                document.getElementById("stringError").innerHTML = "";
+                // Et enfin on ajoute le tableau dans le html
+                document.body.appendChild(table);
+            }
         })
         .catch(error => console.error('Error fetching data:', error));
     });
