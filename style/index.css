@@ -43,6 +43,18 @@ html, * {
     border: 1px solid #5F259F;
 }
 
+.activity {
+    background-color: #FFFD99;
+}
+
+.greenPlace {
+    background-color: #CBFFF9;
+}
+
+.fontaines {
+    background-color: #FFD0E0;
+}
+
 td {
     text-align: center;
     color: #FFF;
